@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaitheeswaran Muthukumar - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a202c;
+            color: #e2e8f0;
+            margin: 0;
+            padding: 0;
+        }
+        .hero {
+            background: linear-gradient(135deg, #4b5eAA 0%, #7f9cf5 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            padding: 5vh 5vw;
+            margin-top: 6rem; /* Initial gap for navbar */
+        }
+        .navbar {
+            background-color: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5vw;
+            position: fixed;
+            width: 90vw;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+        .nav-link:hover {
+            color: #a3bffa !important;
+            transform: translateY(-2px);
+        }
+        .card {
+            background-color: #2d3748;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .section-header {
+            position: relative;
+            display: inline-block;
+        }
+        .section-header::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: #4b5eAA;
+            bottom: -5px;
+            left: 25%;
+        }
+        footer {
+            background-color: #1a202c;
+            border-top: 1px solid #4b5eAA;
+            padding: 2rem 0;
+        }
+        .btn-primary {
+            background-color: #4b5eAA;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #7f9cf5;
+        }
+        .profile-img {
+            border-radius: 50%;
+            border: 4px solid #fff;
+            width: 15vw;
+            height: 15vw;
+            max-width: 200px;
+            max-height: 200px;
+            object-fit: cover;
+        }
+        .skill-card, .contact-card {
+            background-color: #2d3748;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            width: 100%; /* Ensure each card takes full width */
+        }
+        .skill-card:hover, .contact-card:hover {
+            background-color: #4a5568;
+            transform: translateY(-5px);
+        }
+        .skill-icon, .contact-icon {
+            font-size: 2.5rem;
+            color: #4b5eAA;
+            margin-bottom: 1rem;
+        }
+        @media (min-width: 640px) { /* sm: tablets */
+            .hero {
+                margin-top: 7rem;
+            }
+            .navbar {
+                padding: 1.2rem 5vw;
+            }
+            .profile-img {
+                width: 12vw;
+                height: 12vw;
+            }
+            .skill-card, .contact-card {
+                padding: 2rem;
+            }
+        }
+        @media (min-width: 1024px) { /* lg: desktops */
+            .container {
+                max-width: 90%;
+            }
+            .hero {
+                margin-top: 8rem;
+                padding: 8vh 10vw;
+            }
+            .navbar {
+                width: 85vw;
+                padding: 1.5rem 7.5vw;
+            }
+            .profile-img {
+                width: 10vw;
+                height: 10vw;
+            }
+            .card {
+                padding: 2rem;
+            }
+            .grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+        @media (min-width: 1280px) { /* xl: large desktops */
+            .container {
+                max-width: 1200px;
+            }
+            .hero {
+                margin-top: 9rem;
+            }
+            .hero h1 {
+                font-size: 4rem;
+            }
+            .hero p {
+                font-size: 1.5rem;
+            }
+            .profile-img {
+                width: 8vw;
+                height: 8vw;
+            }
+            .grid {
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <!-- Navigation -->
+<nav class="navbar fixed-top py-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="#" class="text-2xl font-bold text-white">Vaitheeswaran L M</a>
+
+    <!-- Hamburger Button -->
+    <button id="menu-toggle" class="text-white text-2xl lg:hidden focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Navigation Links -->
+    <ul id="nav-links" class="hidden lg:flex space-x-6">
+      <li><a href="#about" class="nav-link text-white text-lg transition duration-300">About</a></li>
+      <li><a href="#experience" class="nav-link text-white text-lg transition duration-300">Experience</a></li>
+      <li><a href="#projects" class="nav-link text-white text-lg transition duration-300">Projects</a></li>
+      <li><a href="#skills" class="nav-link text-white text-lg transition duration-300">Skills</a></li>
+      <li><a href="#contact" class="nav-link text-white text-lg transition duration-300">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Mobile Menu -->
+  <ul id="mobile-menu" class="lg:hidden hidden flex-col items-center mt-4 space-y-4 text-white text-lg">
+    <li><a href="#about" class="nav-link">About</a></li>
+    <li><a href="#experience" class="nav-link">Experience</a></li>
+    <li><a href="#projects" class="nav-link">Projects</a></li>
+    <li><a href="#skills" class="nav-link">Skills</a></li>
+    <li><a href="#contact" class="nav-link">Contact</a></li>
+  </ul>
+</nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero py-32 text-center" id="about" data-aos="fade-up">
+        <div class="container mx-auto">
+            <img src="./images/Profile_Pic.jpeg" alt="Vaitheeswaran Muthukumar" class="profile-img mx-auto mb-6" data-aos="zoom-in">
+            <h1 class="text-5xl font-bold mb-4">Vaitheeswaran Muthukumar</h1>
+            <p class="text-xl mb-6">Crafting Innovative Solutions with Ruby on Rails, React, and AWS</p>
+            <a href="https://github.com/vaitheeswaran-15" class="btn-primary text-white py-3 px-6 rounded-full text-lg font-semibold" target="_blank">Explore My Work</a>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-16" id="experience" data-aos="fade-up">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold section-header mb-12 text-center">Experience</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-6 rounded-lg" data-aos="zoom-in">
+                    <h4 class="text-xl font-semibold">Developer</h4>
+                    <p class="text-gray-400"><strong>Mallow Technologies, Karur</strong><br>
+                    June 2024 – Present</p>
+                    <ul class="list-disc ml-5 mt-4 space-y-2">
+                        <li>Integrated Google and Microsoft OAuth for seamless email functionality.</li>
+                        <li>Implemented Stripe for secure payment processing in Rails.</li>
+                        <li>Deployed apps on AWS with S3 and Redis for performance optimization.</li>
+                        <li>Built an MVP with Ruby on Rails and PostgreSQL, focusing on authentication.</li>
+                        <li>Developed full-stack features with React and REST APIs.</li>
+                    </ul>
+                </div>
+                <div class="card p-6 rounded-lg" data-aos="zoom-in" data-aos-delay="100">
+                    <h4 class="text-xl font-semibold">Junior Developer</h4>
+                    <p class="text-gray-400"><strong>Mallow Technologies, Karur</strong><br>
+                    June 2023 – May 2024</p>
+                    <ul class="list-disc ml-5 mt-4 space-y-2">
+                        <li>Implemented Elasticsearch for advanced search capabilities.</li>
+                        <li>Developed REST APIs for OpenAI-powered AI chat features.</li>
+                        <li>Provided technical support for CRM tools, ensuring reliability.</li>
+                    </ul>
+                </div>
+                <div class="card p-6 rounded-lg col-span-1 md:col-span-2 lg:col-span-3" data-aos="zoom-in" data-aos-delay="200">
+                    <h4 class="text-xl font-semibold">Project Intern</h4>
+                    <p class="text-gray-400"><strong>Mallow Technologies, Karur</strong><br>
+                    March 2023 – June 2023</p>
+                    <ul class="list-disc ml-5 mt-4 space-y-2">
+                        <li>Developed and integrated REST APIs using Rails and SQL.</li>
+                        <li>Enhanced service integration for improved functionality.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-16 bg-gray-800" id="projects" data-aos="fade-up">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold section-header mb-12 text-center">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-6 rounded-lg" data-aos="zoom-in">
+                    <h4 class="text-xl font-semibold">SaaS Project Management</h4>
+                    <p class="text-gray-400"><strong>Tech Stack:</strong> Ruby on Rails, HTML, CSS, PostgreSQL, AWS</p>
+                    <ul class="list-disc ml-5 mt-4 space-y-2">
+                        <li>Developed a robust project management app with backend focus.</li>
+                        <li>Integrated Devise for authentication and cron jobs for efficiency.</li>
+                    </ul>
+                </div>
+                <div class="card p-6 rounded-lg" data-aos="zoom-in" data-aos-delay="100">
+                    <h4 class="text-xl font-semibold">AWS Scalable Architecture</h4>
+                    <p class="text-gray-400"><strong>Tech Stack:</strong> AWS (Auto Scaling, ELB, Bastion Host)</p>
+                    <ul class="list-disc ml-5 mt-4 space-y-2">
+                        <li>Built an exciting project exploring AWS services this week.</li>
+                        <li>Implemented Auto Scaling Groups for dynamic scaling.</li>
+                        <li>Configured Elastic Load Balancer for efficient traffic distribution.</li>
+                        <li>Set up Bastion Host/Jump Server for secure access.</li>
+                        <li>Successfully launched a project using this architecture.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-16" id="skills" data-aos="fade-up">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold section-header mb-12 text-center">Technical Skills</h2>
+            <div class="grid grid-cols-1 gap-6">
+                <div class="skill-card" data-aos="zoom-in">
+                    <i class="fas fa-code skill-icon"></i>
+                    <h5 class="text-lg font-semibold mb-2">Languages</h5>
+                    <p class="text-gray-300">Ruby, Python, Java, SQL (Postgres), JavaScript, HTML/CSS</p>
+                </div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-layer-group skill-icon"></i>
+                    <h5 class="text-lg font-semibold mb-2">Frameworks & Technologies</h5>
+                    <p class="text-gray-300">Ruby on Rails, Elasticsearch, React, Bootstrap, Prompt Engineering, Generative AI</p>
+                </div>
+                <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-tools skill-icon"></i>
+                    <h5 class="text-lg font-semibold mb-2">Developer Tools</h5>
+                    <p class="text-gray-300">Git, Docker, AWS, VS Code, RubyMine</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16" id="contact" data-aos="fade-up">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold section-header mb-12 text-center">Get in Touch</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="contact-card" data-aos="zoom-in">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <p><strong>Email:</strong> <a href="mailto:lmvaitheeswaran@gmail.com" class="text-blue-400 hover:underline">lmvaitheeswaran@gmail.com</a></p>
+                </div>
+                <div class="contact-card" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <p><strong>Phone:</strong> <a href="tel:+919445148166" class="text-blue-400 hover:underline">+91 9445148166</a></p>
+                </div>
+                <div class="contact-card" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fab fa-github contact-icon"></i>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/vaitheeswaran-15" class="text-blue-400 hover:underline" target="_blank">github.com/vaitheeswaran-15</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center">
+        <p class="text-gray-400">© 2025 Vaitheeswaran Muthukumar. Built with Passion!</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+
+    <script>
+  const toggleButton = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  toggleButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
+</body>
+</html>
